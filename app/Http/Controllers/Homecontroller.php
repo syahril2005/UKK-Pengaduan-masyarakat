@@ -2,83 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengaduan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Homecontroller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view ('dashboard');
+        return view('masyarakat.dashboard');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function list()
     {
-        //
+        $datas = Pengaduan::get();
+        return view('masyarakat.pengaduan.list-pengaduan', compact('datas'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validate = $request->all();
+        $validate = $request->validate([
+            'tgl_pengaduan' => 'required',
+            'nik' => 'required',
+            'isi_laporan' => 'required',
+            'foto' => 'required',
+        ]);
+        if ($request->file('foto')) {
+            $validate['foto'] = $request->file('foto')->store('pengaduan-img');
+        }
+        Pengaduan::create($validate);
+        return redirect()->route('home');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function destroy($id_pengaduan)
     {
-        //
+        $datas = Pengaduan::findOrFail($id_pengaduan);
+        if ($datas->foto) {
+            Storage::delete($datas->foto);
+        }
+        $datas->delete();
+        return redirect()->route('tanggapan');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function show($id_pengaduan)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $data = Pengaduan::where('id_pengaduan', $id_pengaduan)->get();
+        return view('masyarakat.pengaduan.show', compact('data'));
     }
 }

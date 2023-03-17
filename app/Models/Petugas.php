@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Petugas extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nama_petugas',
+        'username',
+        'password',
+        'telp',
+        'level',
+
+
+    ];
 }
