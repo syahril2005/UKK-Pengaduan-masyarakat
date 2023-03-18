@@ -10,7 +10,8 @@ class Homecontroller extends Controller
 {
     public function index()
     {
-        return view('masyarakat.dashboard');
+        $datas = Pengaduan::get();
+        return view('masyarakat.pengaduan.index', compact('datas'));
     }
 
     public function list()
@@ -21,6 +22,7 @@ class Homecontroller extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $validate = $request->all();
         $validate = $request->validate([
             'tgl_pengaduan' => 'required',
@@ -32,7 +34,8 @@ class Homecontroller extends Controller
             $validate['foto'] = $request->file('foto')->store('pengaduan-img');
         }
         Pengaduan::create($validate);
-        return redirect()->route('home');
+        return redirect()->route('home')->with('alert', 'sucses!');
+        
     }
 
     public function destroy($id_pengaduan)
@@ -50,4 +53,7 @@ class Homecontroller extends Controller
         $data = Pengaduan::where('id_pengaduan', $id_pengaduan)->get();
         return view('masyarakat.pengaduan.show', compact('data'));
     }
+    
+
+
 }

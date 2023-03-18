@@ -2,6 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\Request as HttpRequest;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class Authenticate extends Middleware
@@ -14,8 +17,9 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
-            return route('login');
+        return $request->expectsJson() ? null : route('login');
+        if ($request->routeIs('admin,*') ) {
+            return route('admin.login');
         }
     }
 }

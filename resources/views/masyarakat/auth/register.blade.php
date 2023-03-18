@@ -59,42 +59,42 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
-                    <p class="text-center small">Enter your personal details to create account</p>
+                    <h5 class="card-title text-center pb-0 fs-4">Buat Akun</h5>
+                    <p class="text-center small">Masukan Data Berikut Untuk Membuat Akun</p>
                   </div>
 
                   <form class="row g-3 needs-validation" action="{{ route('register.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="col-12">
-                      <label for="nik" class="form-label">Your Nik</label>
+                      <label for="nik" class="form-label">Masukan Nik</label>
                       <input type="number" name="nik" class="form-control" id="nik" required autofocus>
-                      <div class="invalid-feedback">Please, enter your nik!</div>
+                      <div class="invalid-feedback">Please, enter Masukan nik!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourName" class="form-label">Your Name</label>
-                      <input type="text" name="nama" class="form-control" id="yourName" required autofocus>
-                      <div class="invalid-feedback">Please, enter your name!</div>
+                      <label for="MasukanName" class="form-label">Masukan Name</label>
+                      <input type="text" name="nama" class="form-control" id="MasukanName" required autofocus>
+                      <div class="invalid-feedback">Please, enter Masukan name!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
+                      <label for="MasukanUsername" class="form-label">Username</label>
                       <div class="input-group has-validation">
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
+                        <input type="text" name="username" class="form-control" id="MasukanUsername" required>
                         <div class="invalid-feedback">Please choose a username.</div>
                       </div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Please enter your password!</div>
+                      <label for="MasukanPassword" class="form-label">Password</label>
+                      <input type="password" name="password" class="form-control" id="MasukanPassword" required>
+                      <div class="invalid-feedback">Please enter Masukan password!</div>
                     </div>
 
                     <div class="col-12">
-                        <label for="yourNumber" class="form-label">Phone</label>
-                        <input type="number" name="telp" class="form-control" id="yourtelp" required>
-                        <div class="invalid-feedback">Please enter your number!</div>
+                        <label for="MasukanNumber" class="form-label">Phone</label>
+                        <input type="number" name="telp" class="form-control" id="Masukantelp" required>
+                        <div class="invalid-feedback">Please enter Masukan number!</div>
                       </div>
 
                     <div class="col-12">

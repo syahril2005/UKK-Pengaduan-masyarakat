@@ -9,13 +9,18 @@ class Tanggapan extends Model
 {
     use HasFactory;
 
-    protected $table = "petugas";
+   
+    protected $table = 'tanggapan';
     protected $fillable = [
+        'id_petugas',
         'id_tanggapan',
         'id_pengaduan',
         'tgl_tanggapan',
         'tanggapan',
-        'id_petugas'
-
     ];
+    
+    public function pengaduan()
+    {
+        return $this->belongsTo(Pengaduan::class);
+    }
 }

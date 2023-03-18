@@ -4,18 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Auth\Authenticatable;
 
-class Masyarakat extends Model
+class Masyarakat extends Model implements AuthenticatableContract
 {
-    use HasFactory;
+    use HasFactory; 
+    use Authenticatable;
 
-    protected $table = "masyarakat";
-    // protected $primaryKey = "nik";
+    protected $table = 'masyarakat';
     protected $fillable = [
         'nik',
         'nama',
         'username',
         'password',
-        'telp',
+        'telp'
     ];
 }
