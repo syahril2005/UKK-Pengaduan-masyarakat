@@ -19,7 +19,13 @@
                 <div class="col-lg-9">
 
                     <div class="card">
+                      @if (session('alert'))
+                      <div class="alert alert-success">
+                          {{ session('alert') }}
+                      </div>
+                  @endif
                         <div class="card-body">
+                          {{-- <span class="d-none d-md-block">Welcome {{ Auth::user()->nama }}!</span> --}}
                             <h5 class="card-title">Pengaduan Rakyat Ciomas</h5>
 
                             <!-- General Form Elements -->

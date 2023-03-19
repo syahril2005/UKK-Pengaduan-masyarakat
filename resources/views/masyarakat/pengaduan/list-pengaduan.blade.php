@@ -45,8 +45,7 @@
                                                 <td>{{ $item->isi_laporan }}</td>
                                                 <td>
                                                     @if ($item->foto)
-                                                        <img style="width:50px; height:50px; ofervlow:hidden;"
-                                                            src="{{ asset('storage/' . $item->foto) }}" alt=" ">
+                                                    <img style="width:50px; height:50px; ofervlow:hidden;" src="{{asset('storage/' .$item>foto)}}" alt=" ">
                                                     @else
                                                         <img style="width:50px; height:50px; ofervlow:hidden;"
                                                             src="{{ asset('assets/img/card.jpg') }}" alt="">

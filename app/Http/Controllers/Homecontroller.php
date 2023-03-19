@@ -34,7 +34,7 @@ class Homecontroller extends Controller
             $validate['foto'] = $request->file('foto')->store('pengaduan-img');
         }
         Pengaduan::create($validate);
-        return redirect()->route('home')->with('alert', 'sucses!');
+        return redirect()->route('home')->with('alert', 'Berhasil Menyimpan !');
         
     }
 
@@ -51,7 +51,7 @@ class Homecontroller extends Controller
     public function show($id_pengaduan)
     {
         $data = Pengaduan::where('id_pengaduan', $id_pengaduan)->get();
-        return view('masyarakat.pengaduan.show', compact('data'));
+        return view('masyarakat.pengaduan.show', compact('data'))->with('hapus', 'Berhasil di hapus !');
     }
     
 

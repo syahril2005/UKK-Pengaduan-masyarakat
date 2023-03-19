@@ -39,7 +39,7 @@ class TanggapanController extends Controller
         $pengaduan['status'] = 'selesai';
         $data->update($pengaduan);
 
-        return redirect()->route('tanggapan');
+        return redirect()->route('tanggapan')->with('alert', 'Berhasil Menanggapi !');
     }
 
     public function update($id)
@@ -63,9 +63,9 @@ class TanggapanController extends Controller
 
     public function pdf($id_pengaduan)
     {
-        // $data = Pengaduan::with('tanggapan')->where('id_pengaduan', $id_pengaduan)->get();
+        $data = Pengaduan::with('tanggapan')->where('id_pengaduan', $id_pengaduan)->get();
         // dd($data);
-        $data = Pengaduan::all();
+        // $data = Pengaduan::all();
         $pdf = pdf::loadView('admin.tanggapan.cetak-pdf', compact('data'))->setOptions(['enable_php', true, 'dpi' => 150, 'defaultFont' => 'sans-serif']);
         return $pdf->download('PengaduanMasyarakat.pdf');
     }

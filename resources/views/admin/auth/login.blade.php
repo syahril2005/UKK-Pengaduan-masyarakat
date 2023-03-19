@@ -57,7 +57,11 @@
               <div class="card mb-3">
 
                 <div class="card-body">
-
+                  @if (session('alert'))
+                  <div class="alert alert-danger">
+                      {{ session('alert') }}
+                  </div>
+                  @endif
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Login Ke Akun mu</h5>
                     <p class="text-center small">Masukan username & password to login</p>

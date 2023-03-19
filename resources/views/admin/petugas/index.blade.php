@@ -32,6 +32,11 @@
         </div> --}}
 
         <div class="card-body">
+          @if (session('alert'))
+          <div class="alert alert-success">
+              {{ session('alert') }}
+          </div>
+      @endif
           <h5 class="card-title">Pengaduan <span>| Rakyat</span></h5>
 
           <table class="table table-borderless datatable">

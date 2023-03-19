@@ -30,11 +30,19 @@
         </div> --}}
 
         <div class="card-body">
-          @foreach ($datas as $item)
-          <a href="{{ route('tanggapan.pdf', $item->id_pengaduan) }}">
-            <button>Cetak Semua</button>
-          </a> 
-          @endforeach
+          @if (session('alert'))
+          <div class="alert alert-success">
+              {{ session('alert') }}
+          </div>
+      @endif
+          @if (session('hapus'))
+          <div class="alert alert-danger">
+              {{ session('hapus') }}
+          </div>
+      @endif
+      <a href="{{ url('/cetak_pdf') }}" class="btn btn-primary" target="_blank">CETAK PDF</a>
+          {{-- </a>  --}}
+          {{-- @endforeach --}}
           <h5 class="card-title">Pengaduan <span>| Rakyat</span></h5>
 
           <table class="table table-borderless datatable">

@@ -65,7 +65,7 @@ Route::group(['middleware' => ['islogin']], function(){
     Route::group(['middleware' => ['isadmin']], function(){
         
             Route::get('tanggapan/cetak-pdf/{id_pengaduan}', [TanggapanController::class,'pdf'])->name('tanggapan.pdf');
-
+            Route::get('cetak_pdf', [LandingController::class, 'cetak']);
             Route::get('petugas', [PetugasController::class, 'index'])->name('petugas')->middleware('isadmin');
             Route::get('petugas/create', [PetugasController::class, 'create'])->name('petugas.create');
             Route::post('petugas/store', [PetugasController::class, 'store'])->name('petugas.store');
@@ -83,8 +83,8 @@ Route::group(['middleware' => ['guest:admin']], function(){
     Route::get('admin/login', [AdminLoginController::class,'index'])->name('admin.login');
     Route::post('admin/login/store', [AdminLoginController::class,'store'])->name('admin.login.store');
     
-    // Route::get('admin/register', [AdminRegisterController::class,'index'])->name('admin.register');
-    // Route::post('admin/register/store', [AdminRegisterController::class,'store'])->name('admin.register.store');
+    Route::get('admin/register', [AdminRegisterController::class,'index'])->name('admin.register');
+    Route::post('admin/register/store', [AdminRegisterController::class,'store'])->name('admin.register.store');
 });
 
 

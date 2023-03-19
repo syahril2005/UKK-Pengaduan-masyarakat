@@ -26,6 +26,6 @@ class Registercontroller extends Controller
         $validate['password']= Hash::make($request['password']);
         // $validate['level'] = 'admin';
         Masyarakat::create($validate);
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'Success - Profile Berhasil Di Update');;
     }
 }

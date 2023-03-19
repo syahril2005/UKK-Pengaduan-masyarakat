@@ -53,7 +53,7 @@ class PetugasController extends Controller
 
         $validate = Petugas::findOrFail($id);
         $validate->update($input);
-        return redirect()->route('petugas');
+        return redirect()->route('petugas')->with('alert', 'Berhasil Menyimpan !');
     }
 
     public function destroy($id)
